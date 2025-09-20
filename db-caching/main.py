@@ -25,9 +25,9 @@ def init_db():
                    age INTEGER
                    )
 """)
-    cursor.execute("INSERT INTO users (id, name, age) VALUES (1,'ADNAN',24 )")
-    cursor.execute("INSERT INTO users (id, name, age) VALUES (1,'ADIL',28 )")
-    cursor.execute("INSERT INTO users (id, name, age) VALUES (1,'HARIS',24 )")
+    cursor.execute("INSERT INTO users (id, name, age) VALUES (1,'ADNAN',24)")
+    cursor.execute("INSERT INTO users (id, name, age) VALUES (2,'ADIL',28)")
+    cursor.execute("INSERT INTO users (id, name, age) VALUES (3,'HARIS',24)")
     conn.commit()
     conn.close()
 
@@ -52,7 +52,7 @@ def get_user(query: UserQuery):
     
     conn = get_db_connection()
     cursor = conn.cursor()
-    cursor.execute("SELECT * FROM user WHERE id = ?", (query.user_id))
+    cursor.execute("SELECT * FROM users WHERE id = ?", (query.user_id,))
     row = cursor.fetchone()
     conn.close()
 
